@@ -1,4 +1,5 @@
 import {Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -7,5 +8,20 @@ import {Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  home:any = true;
+  let
+  constructor(private router:Router) {
+
+    router.events.subscribe(event => {
+
+      if (event instanceof NavigationEnd ) {
+        console.log(event.url !== "/"); // event.url has current url
+        if (event.url !== "/"){
+          this.home = false;
+        }
+      }
+    });
+  }
+
 
 }

@@ -2,3 +2,133 @@
 @import '../node_modules/@swimlane/ngx-datatable/release/index.css';
 @import '../node_modules/@swimlane/ngx-datatable/release/themes/material.css';
 @import '../node_modules/@swimlane/ngx-datatable/release/assets/icons.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@font-face {
+    font-family: 'SourceSansPro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('SourceSansPro'), local('SourceSansPro'), url(assets/Source_Sans_Pro/SourceSansPro-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'SourceSansPro-Italic';
+    font-style: normal;
+    font-weight: 700;
+    src: local('SourceSansPro-Italic'), local('SourceSansPro-Italic'), url(assets/Source_Sans_Pro/SourceSansPro-Italic.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'SourceSansPro-Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: local('SourceSansPro-Bold'), local('SourceSansPro-Bold'), url(assets/Source_Sans_Pro/SourceSansPro-SemiBold.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'SourceSansPro-SemiBoldItalic';
+    font-style: normal;
+    font-weight: 700;
+    src: local('SourceSansPro-SemiBoldItalic'), local('SourceSansPro-SemiBoldItalic'), url(assets/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'SourceSansPro-BlackItalic';
+    font-style: normal;
+    font-weight: 700;
+    src: local('SourceSansPro-BlackItalic'), local('SourceSansPro-BlackItalic'), url(assets/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf) format('truetype');
+}
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 40px;
+    background: url('/assets/background.jpeg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    font-family: 'SourceSansPro', sans-serif;
+}
+
+/*---------------- Navbar --------------------*/
+nav {
+    background-color: #0095a8 !important;
+    border: none !important;
+    height: 90px;
+    color: white;
+}
+#icono{
+  top:15px;
+}
+#navlogin{
+  color: white;
+  text-align: center;
+  font-family: 'SourceSansPro';
+  font-size: 17pt;
+}
+#navlogin:hover{
+  color: #25c6d8;
+}
+/*---------------- Footer --------------------*/
+
+.footer {
+  position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    font-family: 'SourceSansPro';
+    color: white;
+    line-height: 60px;
+    background-color: #9ea7aa;
+}
+.text-muted {
+    color: white !important;
+    font-size: 13px;
+}
+#escudo{
+  position: absolute;
+  top:3px;
+  left:85%;
+}
+/*---------------- Home --------------------*/
+#slogan{
+  color: white;
+  text-align: center;
+  font-family: 'SourceSansPro-SemiBoldItalic';
+  font-size: 43pt;
+   margin-top: 59px;
+}
+#buttons{
+  text-align: center;
+  margin-top: 35px;
+}
+#button-register{
+    height: 50px;
+    width: 200px;
+    font-size: 20pt;
+    background-color: #25c6d8;
+    color: white;
+    font-family: "SourceSansPro";
+    margin-right:30px;
+    margin-bottom: 300px;
+}
+#button-login{
+    height: 50px;
+    width: 200px;
+    font-size: 20pt;
+    background-color: white;
+    color: #25c6d8;
+    font-family: "SourceSansPro";
+    margin-bottom: 300px;
+}
+
+/*---------------- Register --------------------*/
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
