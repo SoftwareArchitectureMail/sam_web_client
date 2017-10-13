@@ -11,7 +11,7 @@ export class MailService {
     let body = { }
     let headers = new Headers({ 'ContentType': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get('http://localhost:4000/sent',options).map(
+    return this.http.get('http://192.168.99.101:4000/sent',options).map(
       response =>  response.json()
       )
     }
@@ -20,7 +20,7 @@ export class MailService {
       let body = { }
       let headers = new Headers({ 'ContentType': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      return this.http.get('http://localhost:4000/draft',options).map(
+      return this.http.get('http://192.168.99.101:4000/draft',options).map(
         response =>  response.json()
         )
       }
