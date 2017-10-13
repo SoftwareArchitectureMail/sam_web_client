@@ -12,35 +12,39 @@ export class DraftComponent implements OnInit {
 
   ngOnInit() {
     this.draft();
+    this.start();
   }
   rows = [];
-
+  selected = [];
   temp = [];
 
-  columns = [
-    { name: 'recipient' },
-    { name: 'subject' },
-    { prop: 'message_body' },
-    { prop: 'created_at' },
-    { name: 'urgent' }
-  ];
+  active: boolean = true;
 
   @ViewChild('draft') table: DatatableComponent;
 
   constructor(
     private mailService: MailService,
     private http: Http) {
-      this.temp = [];
       this.rows= [];
+      this.temp = [];
+      this.selected = [];
     }
 
 
     draft() {
       this.mailService.draft().subscribe(res=> {
         this.rows=res;
+        this.selected=this.selected;
         this.temp=res;
       });
     }
+
+    onSelect({ selected }) {
+      console.log('Select Event', selected, this.selected);
+      this.selected.splice(0, this.selected.length);
+      this.selected.push(...selected);
+  }
+
 
     updateFilter(event) {
       const val = event.target.value.toLowerCase();
@@ -55,7 +59,16 @@ export class DraftComponent implements OnInit {
 
       // Whenever the filter changes, always go back to the first page
       this.table.offset = 0;
+      this.active = true;
     }
 
+    start() {
+      if(!this.active) return;
+      setTimeout(this.updateRandom.bind(this), 60000);
+    }
 
+    updateRandom(){
+      this.draft();
+      this.start();
+    }
   }

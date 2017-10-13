@@ -4,17 +4,54 @@
   placeholder='¿A quién le enviaste el mensaje?'
   (keyup)='updateFilter($event)'
 />
-<div>
   <ngx-datatable
   #sent
-       class='material'
-       [columns]="columns"
-       [columnMode]="'force'"
-       [headerHeight]="50"
-       [footerHeight]="50"
-       [rowHeight]="'auto'"
-       [limit]="10"
-       [rows]='rows'>
+  class="material"
+   [columnMode]="'force'"
+   [headerHeight]="0"
+   [footerHeight]="50"
+   [rowHeight]="40"
+   [scrollbarH]="true"
+   [rows]="rows"
+   [limit]="10"
+   [selected]="selected"
+   [selectionType]="'checkbox'"
+   (select)='onSelect($event)'>
+       <ngx-datatable-column
+            [width]="30"
+            [canAutoResize]="false"
+            [checkboxable]="true">
+          </ngx-datatable-column>
+          <ngx-datatable-column name="urgent" [width]="30" [canAutoResize]="false">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div *ngIf="value;">
+                  <i class="fa fa-exclamation-circle" aria-hidden="true" style="color:red;"></i>
+                </div>
+              </ng-template>
+        </ngx-datatable-column>
+          <ngx-datatable-column name="recipient" [width]="80"></ngx-datatable-column>
+          <ngx-datatable-column prop="attachment"[width]="30" [canAutoResize]="false">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div *ngIf="value.url;">
+                <i class="fa fa-paperclip" aria-hidden="true"></i>
+              </div>
+            </ng-template>
+      </ngx-datatable-column>
+          <ngx-datatable-column name="subject" [width]="200"></ngx-datatable-column>
+          <ngx-datatable-column prop="message_body" [width]="300"></ngx-datatable-column>
+          <ngx-datatable-column prop="sent_date">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+              <strong>  {{value | date : 'short'}}  </strong>
+          </ng-template>
+        </ngx-datatable-column>
 </ngx-datatable>
 
-</div>
+<div class='selected-column'>
+        <h4>Selections <small>({{selected?.length}})</small></h4>
+        <ul>
+          <li *ngFor='let sel of selected'>
+            {{sel.subject}}
+          </li>
+          <li *ngIf="!selected?.length">No Selections</li>
+        </ul>
+      </div>
