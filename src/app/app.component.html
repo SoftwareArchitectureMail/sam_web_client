@@ -1,0 +1,10 @@
+
+<!-- Home-->
+  <div *ngIf="home" class="container">
+    <h3 id="slogan">El mejor sistema de correo electrónico, rápido, seguro y automatizado.</h3>
+    <div id="buttons">
+      <button type="button"  id="button-register" class="btn btn-lg " routerLink="/register">Registrarse</button>
+      <button type="button"  id ="button-login" class="btn btn-lg ">Iniciar sesión</button>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

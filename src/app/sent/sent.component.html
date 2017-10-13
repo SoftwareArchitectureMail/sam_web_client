@@ -1,0 +1,20 @@
+<input
+  type='text'
+  style='padding:8px;margin:15px auto;width:30%;'
+  placeholder='¿A quién le enviaste el mensaje?'
+  (keyup)='updateFilter($event)'
+/>
+<div>
+  <ngx-datatable
+  #sent
+       class='material'
+       [columns]="columns"
+       [columnMode]="'force'"
+       [headerHeight]="50"
+       [footerHeight]="50"
+       [rowHeight]="'auto'"
+       [limit]="10"
+       [rows]='rows'>
+</ngx-datatable>
+
+</div>
