@@ -44,10 +44,4 @@ export class InboxComponent implements OnInit {
     this.table.offset = 0;
   }
 
-  getRead(row) {
-  return {
-    'is-urgent': row.read === true
-    };
-  }
-
 }
