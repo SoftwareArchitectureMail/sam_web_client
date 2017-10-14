@@ -33,4 +33,22 @@ export class MailService {
         response =>  response.json()
         )
     }
+
+    getMail(id) {
+      let body = { }
+      let headers = new Headers({ 'ContentType': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.get('http://192.168.99.101:4000/inbox/'+String(id),options).map(
+        response =>  response.json()
+        )
+    }
+
+    readMail(id) {
+      let body = { read: true }
+      let headers = new Headers({ 'ContentType': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.put('http://192.168.99.101:4000/inbox/'+String(id),body,options).map(
+        response =>  response.json()
+        )
+    }
   }

@@ -16,7 +16,8 @@ placeholder='Buscar por remitente'
     [limit]="10"
     [rows]='rows'
     [selected]="selected"
-    [selectionType]="'checkbox'">
+    [selectionType]="'checkbox'"
+    (select)='onSelect($event)'>
 
   <ngx-datatable-column
     [width]="30"
@@ -37,22 +38,26 @@ placeholder='Buscar por remitente'
 
 <ngx-datatable-column name="sender">
   <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-    <div *ngIf="row.read; else unread">
+    <div *ngIf="!row.read; else unread" (click)='onClick(row)'>
       <strong>{{value}}</strong>
     </div>
     <ng-template #unread>
       <!--a href="http://github.com">{{value}}</a-->
-      {{value}}
+      <div>
+        {{value}}
+      </div>
     </ng-template>
   </ng-template>
 </ngx-datatable-column>
 
 <ngx-datatable-column name="subject">
   <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-    <div *ngIf="row.read; else unread">
+    <div *ngIf="!row.read; else unread" (click)='onClick(row)'>
+      <!--a href="http://192.168.99.101:4000/inbox/{{row.id}}"><strong>{{value}}</strong></a-->
       <strong>{{value}}</strong>
     </div>
     <ng-template #unread>
+      <!--a href="http://192.168.99.101:4000/inbox/{{row.id}}">{{value}}</a-->
       {{value}}
     </ng-template>
   </ng-template>
@@ -60,18 +65,20 @@ placeholder='Buscar por remitente'
 
 <ngx-datatable-column prop="message_body">
   <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-    <div *ngIf="row.read; else unread">
+    <div *ngIf="!row.read; else unread" (click)='onClick(row)'>
       <strong>{{value}}</strong>
     </div>
     <ng-template #unread>
-      {{value}}
+      <div>
+        {{value}}
+      </div>
     </ng-template>
   </ng-template>
 </ngx-datatable-column>
 
 <ngx-datatable-column prop="sent_date">
   <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-    <div *ngIf="row.read; else unread">
+    <div *ngIf="!row.read; else unread">
       <strong>{{value | date : 'short'}}</strong>
     </div>
     <ng-template #unread>
@@ -81,4 +88,15 @@ placeholder='Buscar por remitente'
 </ngx-datatable-column>
 
 </ngx-datatable>
+
+<!--div class='selected-column'>
+  <h4>Selections <small>({{selected?.length}})</small></h4>
+    <ul>
+      <li *ngFor='let sel of selected'>
+        {{sel.subject}}
+      </li>
+      <li *ngIf="!selected?.length">No Selections</li>
+    </ul>
+</div-->
+
 </div>

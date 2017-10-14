@@ -44,4 +44,18 @@ export class InboxComponent implements OnInit {
     this.table.offset = 0;
   }
 
+  onSelect({ selected }) {
+      console.log('Select Event', selected, this.selected);
+      this.selected.splice(0, this.selected.length);
+      this.selected.push(...selected);
+  }
+
+  onClick(row) {
+    row.read = true;
+    let i = 1;
+    i = row.id;
+    this.mailService.readMail(i).subscribe()
+    /*this.mailService.getMail(i).subscribe()*/
+  }
+
 }
