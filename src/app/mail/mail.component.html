@@ -1,0 +1,9 @@
+<div id="mySidenav" class="sidenav" [style.width]="setWidth()">
+  <a href="javascript:void(0)" class="closebtn" (click)="changeStyle = false;">&times;</a>
+  <a [routerLink]="[{ outlets: { 'mailContent': ['inbox'] } }]" (click)="changeStyle = false;">Recibidos</a>
+  <a [routerLink]="[{ outlets: { 'mailContent': ['sent'] } }]" (click)="changeStyle = false;">Enviados</a>
+  <a [routerLink]="[{ outlets: { 'mailContent': ['drafts'] } }]" (click)="changeStyle = false;">Draft</a>
+</div>  
+<span class="menu-btn" (click)="changeStyle = !changeStyle;">&#9776;</span>
+
+<router-outlet name="mailContent"></router-outlet>

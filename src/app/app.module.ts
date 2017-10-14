@@ -13,6 +13,12 @@ import { RegisterComponent } from './register/register.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { MailComponent } from './mail/mail.component';
+import { SentDetailsComponent } from './sent-details/sent-details.component';
+import { DraftDetailsComponent } from './draft-details/draft-details.component';
+import { MailDetailsComponent } from './mail-details/mail-details.component';
+
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,13 +28,17 @@ import { NotificationsComponent } from './notifications/notifications.component'
     RegisterComponent,
     InboxComponent,
     LoginComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    MailComponent,
+    SentDetailsComponent,
+    DraftDetailsComponent,
+    MailDetailsComponent,
   ],
   imports: [
+    BrowserModule,
     NgxDatatableModule,
     HttpModule,
     FormsModule,
-    BrowserModule,
     RouterModule.forRoot([
       {
       path: 'register',
@@ -39,17 +49,27 @@ import { NotificationsComponent } from './notifications/notifications.component'
       component: LoginComponent
     },
     {
-      path: 'inbox',
-      component: InboxComponent
+      path: 'mail',
+      component: MailComponent,
+      children: [
+        {
+          path: 'inbox',
+          component: InboxComponent,
+          outlet: 'mailContent'
+        },
+          {
+          path: 'sent',
+          component: SentComponent,
+          outlet: 'mailContent'
+        },
+        {
+        path: 'drafts',
+        component: DraftComponent,
+        outlet: 'mailContent'
+      }
+      ]
     },
-      {
-      path: 'sent',
-      component: SentComponent
-    },
-    {
-    path: 'drafts',
-    component: DraftComponent
-  }
+
   ])
   ],
   providers: [MailService],
