@@ -1,0 +1,84 @@
+<input
+type='text'
+style='padding:8px;margin:15px auto;width:30%;'
+placeholder='Buscar por remitente'
+(keyup)='updateFilter($event)'
+/>
+<div>
+  <!--[rowClass]="getRead"-->
+  <ngx-datatable
+    #inbox
+    class='material'
+    [columnMode]="'force'"
+    [headerHeight]="0"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10"
+    [rows]='rows'
+    [selected]="selected"
+    [selectionType]="'checkbox'">
+
+  <ngx-datatable-column
+    [width]="30"
+    [sortable]="false"
+    [canAutoResize]="false"
+    [draggable]="false"
+    [resizeable]="false"
+    [checkboxable]="true">
+  </ngx-datatable-column>
+
+<ngx-datatable-column name="urgent" [width]="30" [canAutoResize]="false">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="value;">
+      <i class="fa fa-exclamation-cirlce" aria-hidden="true" style="color:red;"></i>
+    </div>
+  </ng-template>
+</ngx-datatable-column>
+
+<ngx-datatable-column name="sender">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="row.read; else unread">
+      <strong>{{value}}</strong>
+    </div>
+    <ng-template #unread>
+      <!--a href="http://github.com">{{value}}</a-->
+      {{value}}
+    </ng-template>
+  </ng-template>
+</ngx-datatable-column>
+
+<ngx-datatable-column name="subject">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="row.read; else unread">
+      <strong>{{value}}</strong>
+    </div>
+    <ng-template #unread>
+      {{value}}
+    </ng-template>
+  </ng-template>
+</ngx-datatable-column>
+
+<ngx-datatable-column prop="message_body">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="row.read; else unread">
+      <strong>{{value}}</strong>
+    </div>
+    <ng-template #unread>
+      {{value}}
+    </ng-template>
+  </ng-template>
+</ngx-datatable-column>
+
+<ngx-datatable-column prop="sent_date">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="row.read; else unread">
+      <strong>{{value | date : 'short'}}</strong>
+    </div>
+    <ng-template #unread>
+      {{value | date : 'short'}}
+    </ng-template>
+  </ng-template>
+</ngx-datatable-column>
+
+</ngx-datatable>
+</div>
