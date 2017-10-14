@@ -18,8 +18,6 @@ import { SentDetailsComponent } from './sent-details/sent-details.component';
 import { DraftDetailsComponent } from './draft-details/draft-details.component';
 import { MailDetailsComponent } from './mail-details/mail-details.component';
 
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +64,12 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
         path: 'drafts',
         component: DraftComponent,
         outlet: 'mailContent'
-      }
+      },
+      {
+        path: 'sentDetails/:id',
+        component: SentDetailsComponent,
+        outlet: 'mailContent'
+      },
       ]
     },
 

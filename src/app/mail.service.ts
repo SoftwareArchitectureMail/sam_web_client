@@ -26,4 +26,16 @@ export class MailService {
         response =>  response.json()
         )
       }
+
+      getSent(id) {
+        let body = { }
+        let headers = new Headers({ 'ContentType': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        //return this.http.get('http://192.168.99.101:4000/sent/'+id,options).map(
+        return this.http.get('http://localhost:4000/sent/'+id,options).map(
+          response =>  response.json()
+          )
+        }
+
+
   }
