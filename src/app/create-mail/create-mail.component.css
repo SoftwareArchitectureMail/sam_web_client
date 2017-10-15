@@ -1,0 +1,262 @@
+.select2-container{
+  width:100%!important;
+  z-index: 1070;
+}
+.select2-container--default .select2-selection--multiple{
+  border-radius: 0px;
+  margin-bottom: 5px;
+  border:1px solid #ccc;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered{
+  padding: 0 0 0 62px;
+}
+.inbox-colum{
+  max-height:500px;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+.inbox-body{
+  min-height:400px;
+  overflow: auto;
+}
+
+.mail_list_column {
+  border-left: 1px solid #DBDBDB
+}
+.mail_view {
+  border-left: 1px solid #DBDBDB
+}
+.mail_list {
+  width: 100%;
+  border-bottom: 1px solid #DBDBDB;
+  margin-bottom: 2px;
+  display: inline-block
+}
+.mail_list .left {
+  width: 5%;
+  float: left;
+  margin-right: 3%
+}
+.mail_list .right {
+  width: 90%;
+  float: left
+}
+.mail_list h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0px 0 6px
+}
+.mail_list h3 small {
+  float: right;
+  color: #ADABAB;
+  font-size: 11px;
+  line-height: 20px
+}
+.mail_list .badge {
+  padding: 3px 6px;
+  font-size: 8px;
+  background: #BAB7B7
+}
+@media (max-width: 767px) {
+  .mail_list {
+    margin-bottom: 5px;
+    display: inline-block
+  }
+}
+.mail_heading h4 {
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-top: 20px
+}
+.attachment {
+  margin-top: 30px
+}
+.attachment ul {
+  width: 100%;
+  list-style: none;
+  padding-left: 0;
+  display: inline-block;
+  margin-bottom: 30px
+}
+.attachment ul li {
+  float: left;
+  width: 150px;
+  margin-right: 10px;
+  margin-bottom: 10px
+}
+.attachment ul li img {
+  height: 150px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 10px
+}
+.attachment ul li span {
+  float: right
+}
+.attachment .file-name {
+  float: left
+}
+.attachment .links {
+  width: 100%;
+  display: inline-block
+}
+.compose {
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #D9DEE4;
+  border-right: 0;
+  border-bottom: 0;
+  border-top-left-radius: 5px;
+  z-index: 1070;
+  display: none;
+}
+.compose .compose-header {
+  padding: 5px;
+  background: #169F85;
+  color: #fff;
+  border-top-left-radius: 5px
+}
+.compose .compose-header .close {
+  text-shadow: 0 1px 0 #ffffff;
+  line-height: .8
+}
+.compose .compose-body{
+  background-color: #f7f7f7;
+}
+.compose .compose-body .editor.btn-toolbar {
+  margin: 0
+}
+.compose .compose-body .editor-wrapper {
+  height: 100%;
+  min-height: 250px;
+  max-height: 250px;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  overflow: scroll;
+}
+.compose .compose-body .editor-wrapper a{
+  text-decoration: underline;
+}
+.compose .compose-footer {
+  padding: 10px
+}
+.compose .dropdown-menu:after{
+  left: 6%;
+  right: initial;
+}
+.editor.btn-toolbar {
+  zoom: 1;
+  background: #F7F7F7;
+  margin: 5px 2px;
+  padding: 3px 0;
+  border: 1px solid #EFEFEF
+}
+.input-group {
+  margin-bottom: 10px
+}
+.ln_solid {
+  border-top: 1px solid #e5e5e5;
+  color: #ffffff;
+  background-color: #ffffff;
+  height: 1px;
+  margin: 20px 0
+}
+span.section {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5
+}
+.form-control {
+  border-radius: 0;
+  width: 100%
+}
+.form-horizontal .control-label {
+  padding-top: 8px
+}
+.form-control:focus {
+  border-color: #CCD0D7;
+  box-shadow: none !important
+}
+legend {
+  font-size: 18px;
+  color: inherit
+}
+.form-horizontal .form-group {
+  margin-right: 0;
+  margin-left: 0
+}
+.form-control-feedback {
+  margin-top: 8px;
+  height: 23px;
+  color: #bbb;
+  line-height: 24px;
+  font-size: 15px
+}
+.form-control-feedback.left {
+  border-right: 1px solid #ccc;
+  left: 13px
+}
+.form-control-feedback.right {
+  border-left: 1px solid #ccc;
+  right: 13px
+}
+.form-control.has-feedback-left {
+  padding-left: 45px
+}
+.form-control.has-feedback-right {
+  padding-right: 45px
+}
+.form-group {
+  margin-bottom: 10px
+}
+.validate {
+  margin-top: 10px
+}
+.invalid-form-error-message {
+  margin-top: 10px;
+  padding: 5px
+}
+.invalid-form-error-message.filled {
+  border-left: 2px solid #E74C3C
+}
+
+.editor-wrapper {
+  background-color: white;
+  border-collapse: separate;
+  border: 1px solid #ccc;
+  padding: 4px;
+  box-sizing: content-box;
+  box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  overflow: scroll;
+  outline: none
+}
+
+.form-compose label{
+  position: absolute;
+  margin: 8px 5px;
+  z-index: 1071;
+}
+.form-compose input,
+.form-compose select{
+  padding-left: 60px;
+  margin-bottom: 5px;
+}
+.compose .compose-footer{
+  background-color: #f1f1f1;
+}

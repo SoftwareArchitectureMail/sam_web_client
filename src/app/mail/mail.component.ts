@@ -12,16 +12,17 @@ import 'rxjs/add/operator/switchMap';
   preserveWhitespaces: false,
 })
 export class MailComponent implements OnInit {
-  changeStyle: false;
+
+  showForm:boolean= false;
+  changeStyle:boolean= false;
+
   constructor(
     private router: Router,
     private location: Location
   ) { }
 
   ngOnInit() {
-
   this.router.navigate(['/mail',{outlets:{'mailContent':['inbox']}}]);
-
   }
 
   setWidth() {
@@ -30,6 +31,10 @@ export class MailComponent implements OnInit {
     } else {
       return "0";
     }
+  }
+
+  onShowForm(showForm: boolean){
+    this.showForm = showForm;
   }
 
 }

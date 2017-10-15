@@ -1,0 +1,89 @@
+<!-- compose -->
+    <div class="compose col-md-6 col-xs-12" [style.display]="showFormMail()">
+      <div class="compose-header">
+        Mensaje nuevo
+        <button type="button" class="close compose-close" (click)="changeForm(false)">
+          <span>×</span>
+        </button>
+      </div>
+	  <form id="form1" name="form1" method="post">
+      <div class="compose-body">
+        <div id="alerts"></div>
+
+        <div class="form-compose">
+        	<label for="tipo" >Tipo: </label>
+            <select id="tipo" name="tipo" class="form-control">
+                <option value="">Seleccionar</option>
+                    <option value="1">Administrativos</option>
+                    <option value="2">Alumnos</option>
+                    <option value="3">Cursos</option>
+                    <option value="4">Profesores</option>
+                            </select>
+        	<label for="to" >Para: </label>
+            <select id="to" name="to[]" class="form-control select_multiple" required disabled multiple="multiple">
+            </select>
+            <label for="asunto" >Asunto: </label>
+            <input type="text" id="asunto" name="asunto" required class="form-control">
+        </div>
+
+		<div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Fuente"><i class="fa fa-font"></i><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+            </div>
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Tamaño de fuente"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a data-edit="fontSize 5"><p style="font-size:17px">Grande</p></a>
+                    </li>
+                    <li><a data-edit="fontSize 3"><p style="font-size:14px">Normal</p></a>
+                    </li>
+                    <li><a data-edit="fontSize 1"><p style="font-size:11px">Pequeño</p></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <a class="btn" data-edit="bold" title="Negrita (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                <a class="btn" data-edit="italic" title="Cursiva (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                <a class="btn" data-edit="strikethrough" title="Tachado"><i class="fa fa-strikethrough"></i></a>
+                <a class="btn" data-edit="underline" title="Subrayado (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+            </div>
+
+           <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hipervínculo"><i class="fa fa-link"></i></a>
+                <div class="dropdown-menu input-append">
+                    <input class="span2" placeholder="URL" type="text" data-edit="createLink" />
+                    <button class="btn" type="button">Agregar</button>
+                </div>
+                <a class="btn" data-edit="unlink" title="Quitar Hipervínculo"><i class="fa fa-cut"></i></a>
+
+            </div>
+
+            <div class="btn-group">
+                <a class="btn" data-edit="insertunorderedlist" title="Viñetas"><i class="fa fa-list-ul"></i></a>
+                <a class="btn" data-edit="insertorderedlist" title="Numeración"><i class="fa fa-list-ol"></i></a>
+                <a class="btn" data-edit="outdent" title="Disminuir sangría (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                <a class="btn" data-edit="indent" title="Aumentar sangría"><i class="fa fa-indent"></i></a>
+            </div>
+            <div class="btn-group">
+                <a class="btn" data-edit="justifyleft" title="Alinear a la izquierda (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                <a class="btn" data-edit="justifycenter" title="Centrar (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                <a class="btn" data-edit="justifyright" title="Alinear a la derecha (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                <a class="btn" data-edit="justifyfull" title="Justificar (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+            </div>
+			            <div class="btn-group">
+                <a class="btn" data-edit="undo" title="Deshacer (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+                <a class="btn" data-edit="redo" title="Rehacer (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+            </div>
+        </div>
+
+        <div id="editor" class="editor-wrapper"></div>
+        <textarea name="mensaje" id="mensaje" style="display:none;"></textarea>
+      </div>
+	  </form>
+      <div class="compose-footer">
+        <button id="btn-Send" class="btn btn-sm btn-success" type="button">Enviar</button>
+      </div>
+    </div>
+    <!-- /compose -->

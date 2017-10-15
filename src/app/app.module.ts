@@ -17,6 +17,7 @@ import { MailComponent } from './mail/mail.component';
 import { SentDetailsComponent } from './sent-details/sent-details.component';
 import { DraftDetailsComponent } from './draft-details/draft-details.component';
 import { MailDetailsComponent } from './mail-details/mail-details.component';
+import { CreateMailComponent } from './create-mail/create-mail.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MailDetailsComponent } from './mail-details/mail-details.component';
     SentDetailsComponent,
     DraftDetailsComponent,
     MailDetailsComponent,
+    CreateMailComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,11 @@ import { MailDetailsComponent } from './mail-details/mail-details.component';
         component: DraftComponent,
         outlet: 'mailContent'
       },
+      {
+      path: 'createmail',
+      component: CreateMailComponent,
+      outlet: 'mailContent'
+    },
       {
         path: 'sentDetails/:id',
         component: SentDetailsComponent,
