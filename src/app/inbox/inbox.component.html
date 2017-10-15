@@ -1,1 +1,94 @@
-<p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat.</p>
+<input
+type='text'
+style='padding:8px;margin:15px auto;width:30%;'
+placeholder='¿Quién te envió el mensaje?'
+(keyup)='updateFilter($event)'
+/>
+<ngx-datatable
+#inbox
+class="material"
+[columnMode]="'force'"
+[headerHeight]="0"
+[footerHeight]="50"
+[rowHeight]="40"
+[scrollbarH]="true"
+[rows]="rows"
+[limit]="10"
+[selected]="selected"
+[selectionType]="'checkbox'"
+(select)='onSelect($event)'>
+<ngx-datatable-column
+[width]="30"
+[canAutoResize]="false"
+[checkboxable]="true">
+</ngx-datatable-column>
+<ngx-datatable-column name="urgent" [width]="30" [canAutoResize]="false">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="value;">
+      <i class="fa fa-exclamation-circle" aria-hidden="true" style="color:red;"></i>
+    </div>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column name="recipient" [width]="80"></ngx-datatable-column>
+<ngx-datatable-column prop="attachment"[width]="30" [canAutoResize]="false">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="value.url;">
+      <i class="fa fa-paperclip" aria-hidden="true"></i>
+    </div>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column name="subject" [width]="200">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div (click)="getInbox(row.id)" class="btn-subject">
+
+      <div *ngIf="!row.read; else unread">
+        <strong>{{value}}</strong>
+      </div>
+      <ng-template #unread>
+
+        <div>
+          {{value}}
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column prop="message_body" [width]="300">
+
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="!row.read; else unread">
+      <strong>{{value}}</strong>
+    </div>
+    <ng-template #unread>
+
+      <div>
+        {{value}}
+      </div>
+    </ng-template>
+    </ng-template>
+  </ngx-datatable-column>
+
+<ngx-datatable-column prop="sent_date">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="!row.read; else unread" (click)='onClick(row)'>
+      <strong>  {{value | date : 'short'}}  </strong>
+    </div>
+    <ng-template #unread>
+      <div>
+        {{value | date : 'short'}}
+      </div>
+    </ng-template>
+
+  </ng-template>
+</ngx-datatable-column>
+</ngx-datatable>
+
+<div class='selected-column'>
+  <h4>Selections <small>({{selected?.length}})</small></h4>
+  <ul>
+    <li *ngFor='let sel of selected'>
+      {{sel.subject}}
+    </li>
+    <li *ngIf="!selected?.length">No Selections</li>
+  </ul>
+</div>
