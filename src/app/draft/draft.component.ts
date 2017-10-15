@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MailService } from '../mail.service';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
 import {DatatableComponent} from '@swimlane/ngx-datatable/src/components/datatable.component';
+import { Router  } from '@angular/router';
+import { Location } from '@angular/common';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-draft',
@@ -23,6 +26,8 @@ export class DraftComponent implements OnInit {
   @ViewChild('draft') table: DatatableComponent;
 
   constructor(
+    private router: Router,
+    private location: Location,
     private mailService: MailService,
     private http: Http) {
       this.rows= [];
@@ -70,5 +75,9 @@ export class DraftComponent implements OnInit {
     updateRandom(){
       this.draft();
       this.start();
+    }
+
+    getDraft(id){
+      this.router.navigate(['/mail',{outlets:{'mailContent':['draftDetails',id]}}]);
     }
   }

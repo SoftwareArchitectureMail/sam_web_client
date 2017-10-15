@@ -5,7 +5,6 @@
   <a [routerLink]="[{ outlets: { 'mailContent': ['sent'] } }]" (click)="changeStyle = false;">Enviados</a>
   <a [routerLink]="[{ outlets: { 'mailContent': ['drafts'] } }]" (click)="changeStyle = false;">Draft</a>
 </div>
-<span class="menu-btn" (click)="changeStyle = !changeStyle;">&#9776;</span>
-
+<button mat-button class="menu-btn" (click)="changeStyle = !changeStyle;">&#9776;</button>
 <router-outlet name="mailContent"></router-outlet>
 <app-create-mail [showForm]="showForm" (onShowForm)="onShowForm($event)"></app-create-mail>

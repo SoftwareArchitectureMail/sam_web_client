@@ -3,7 +3,7 @@ import { MailService } from '../mail.service';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
 import {DatatableComponent} from '@swimlane/ngx-datatable/src/components/datatable.component';
 import { Router  } from '@angular/router';
-import { Location }                 from '@angular/common';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 
@@ -47,7 +47,6 @@ export class SentComponent implements OnInit {
     }
 
     onSelect({ selected }) {
-      console.log('Select Event', selected, this.selected);
       this.selected.splice(0, this.selected.length);
       this.selected.push(...selected);
   }
@@ -80,8 +79,6 @@ export class SentComponent implements OnInit {
     }
 
     getSent(id){
-    //  this.router.navigate(['/mail',{outlets:{'mailContent':[{'sentDetails':[id]}]}}]);
-    console.log(id);
       this.router.navigate(['/mail',{outlets:{'mailContent':['sentDetails',id]}}]);
     }
   }

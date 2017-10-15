@@ -15,7 +15,7 @@ export class AppComponent {
     router.events.subscribe(event => {
 
       if (event instanceof NavigationEnd ) {
-        console.log(event.url !== "/"); // event.url has current url
+        //console.log(event.url !== "/"); // event.url has current url
         if (event.url !== "/"){
           this.home = false;
         }
