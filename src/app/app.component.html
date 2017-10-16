@@ -1,10 +1,29 @@
 
+<nav class="navbar" >
+  <div id="icono">
+    <a *ngIf="auth" routerLink="/inbox">
+      <img src="/assets/sam.png" width="380 " alt="">
+  </a>
+  <a *ngIf="!auth" routerLink="/">
+    <img src="/assets/sam.png" width="380 " alt="">
+  </a>
+  <router-outlet></router-outlet>
+</div>
+  <div  *ngIf="auth" class="user" >
+    <img src="/assets/user.png" width="80 " alt="">
+    <a  >{{user}}@sam.com</a>
+  </div>
+    <div  *ngIf="auth" class="logout" >
+      <a  (click)="logout()">Cerrar sesión</a>
+    </div>
+</nav>
+
 <!-- Home-->
-  <div *ngIf="home" class="container">
+  <div *ngIf="home && !auth" class="container">
     <h3 id="slogan">El mejor sistema de correo electrónico, rápido, seguro y automatizado.</h3>
     <div id="buttons">
       <button type="button"  id="button-register" class="btn btn-lg " routerLink="/register">Registrarse</button>
-      <button type="button"  id ="button-login" class="btn btn-lg ">Iniciar sesión</button>
+      <button type="button"  id ="button-login" class="btn btn-lg " routerLink="/login">Iniciar sesión</button>
     </div>
   </div>
   <router-outlet></router-outlet>

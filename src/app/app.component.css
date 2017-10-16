@@ -1,1 +1,25 @@
-
+.logout{
+  color: white;
+  text-align: center;
+  font-family: 'SourceSansPro-SemiBoldItalic';
+  font-size: 15pt;
+  cursor: pointer;
+  position: absolute;
+  top: 32px;
+  left: 90%;
+}
+.user{
+  color: white;
+  text-align: center;
+  font-family: 'SourceSansPro-SemiBoldItalic';
+  font-size: 15pt;
+  cursor: pointer;
+  position: absolute;
+  top: 32px;
+  left: 10%;
+}
+.user img{
+  position: absolute;
+  top: -26px;
+  left: -60%;
+}

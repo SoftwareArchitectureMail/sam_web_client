@@ -1,0 +1,52 @@
+.panel-group{
+  padding-bottom: 20px;
+}
+.panel-heading {
+  text-align: center;
+  font-family: 'SourceSansPro-Bold';
+  font-size: 26px
+}
+.panel-body {
+  text-align: center;
+  font-family: 'SourceSansPro-Bold';
+  font-size: 16px
+}
+.form-control+.input-group-addon:not(:first-child) {
+    border-left: 0;
+    width: 50%;
+    font-size: 12pt;
+}
+.btn-info{
+  background-color: #24b7ca;
+  width:  120px !important;
+  height: 50px !important;
+  border-radius:  8px
+}
+input{
+  font-size: 17px;
+}
+input[disabled] {
+    cursor: not-allowed;
+    background: gray;
+    border-color: white;
+}
+.alert{
+  background: #f2edda;
+  right: -64px !important;
+  width: 52.4% !important;
+  margin-bottom: -51px;
+  position: relative;
+  font-size: .9em;
+  display: inline-block;
+  animation: 2s alertAnim forwards;
+}
+@keyframes alertAnim {
+  from {
+    opacity: 0;
+    transform: translateY();
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

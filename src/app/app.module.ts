@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { MailService } from './mail.service'
 import { SentComponent } from './sent/sent.component'
@@ -28,6 +28,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
     NgxDatatableModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     RouterModule.forRoot([
       {
