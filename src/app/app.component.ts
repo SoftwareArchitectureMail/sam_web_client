@@ -14,11 +14,13 @@ export class AppComponent {
   constructor(private router:Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd ) {
+
         if(localStorage.getItem("username")!=null && localStorage.getItem("token")!=null){
           this.auth=true;
         }else{
           this.auth=false;
         }
+        //console.log(event.url !== "/"); // event.url has current url
         if (event.url !== "/"){
           this.home = false;
         }

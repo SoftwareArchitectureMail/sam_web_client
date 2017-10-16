@@ -1,24 +1,94 @@
-<div class="bd-example bd-example-tabs">
-  <div class="row">
-    <div class="col-2">
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
-        <a class="nav-link active" id="v-pills-inbox-tab" data-toggle="pill" href="#v-pills-inbox" role="tab" aria-controls="v-pills-inbox" aria-expanded="false">Recibidos</a>
-        <a class="nav-link " id="v-pills-sent-tab" data-toggle="pill" href="#v-pills-sent" role="tab" aria-controls="v-pills-sent" aria-expanded="true">Enviados</a>
-        <a class="nav-link" id="v-pills-draft-tab" data-toggle="pill" href="#v-pills-draft" role="tab" aria-controls="v-pills-draft" aria-expanded="true">Borradores</a>
-      </div>
+<input
+type='text'
+style='padding:8px;margin:15px auto;width:30%;'
+placeholder='¿Quién te envió el mensaje?'
+(keyup)='updateFilter($event)'
+/>
+<ngx-datatable
+#inbox
+class="material"
+[columnMode]="'force'"
+[headerHeight]="0"
+[footerHeight]="50"
+[rowHeight]="40"
+[scrollbarH]="true"
+[rows]="rows"
+[limit]="10"
+[selected]="selected"
+[selectionType]="'checkbox'"
+(select)='onSelect($event)'>
+<ngx-datatable-column
+[width]="30"
+[canAutoResize]="false"
+[checkboxable]="true">
+</ngx-datatable-column>
+<ngx-datatable-column name="urgent" [width]="30" [canAutoResize]="false">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="value;">
+      <i class="fa fa-exclamation-circle" aria-hidden="true" style="color:red;"></i>
     </div>
-    <div class="col-10">
-      <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade" id="v-pills-inbox" role="tabpanel" aria-labelledby="v-pills-inbox-tab" aria-expanded="false">
-          <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat.</p>
-        </div>
-        <div class="tab-pane fade active show" id="v-pills-sent" role="tabpanel" aria-labelledby="v-pills-sent-tab" aria-expanded="true">
-          <app-sent></app-sent>
-        </div>
-        <div class="tab-pane fade" id="v-pills-draft" role="tabpanel" aria-labelledby="v-pills-draft-tab" aria-expanded="false">
-            <app-draft></app-draft>
-        </div>
-      </div>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column name="recipient" [width]="80"></ngx-datatable-column>
+<ngx-datatable-column prop="attachment"[width]="30" [canAutoResize]="false">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="value.url;">
+      <i class="fa fa-paperclip" aria-hidden="true"></i>
     </div>
-  </div>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column name="subject" [width]="200">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div (click)="getInbox(row.id)" class="btn-subject">
+
+      <div *ngIf="!row.read; else unread">
+        <strong>{{value}}</strong>
+      </div>
+      <ng-template #unread>
+
+        <div>
+          {{value}}
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column prop="message_body" [width]="300">
+
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="!row.read; else unread">
+      <strong>{{value}}</strong>
+    </div>
+    <ng-template #unread>
+
+      <div>
+        {{value}}
+      </div>
+    </ng-template>
+    </ng-template>
+  </ngx-datatable-column>
+
+<ngx-datatable-column prop="sent_date">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="!row.read; else unread" (click)='onClick(row)'>
+      <strong>  {{value | date : 'short'}}  </strong>
+    </div>
+    <ng-template #unread>
+      <div>
+        {{value | date : 'short'}}
+      </div>
+    </ng-template>
+
+  </ng-template>
+</ngx-datatable-column>
+</ngx-datatable>
+
+<div class='selected-column'>
+  <h4>Selections <small>({{selected?.length}})</small></h4>
+  <ul>
+    <li *ngFor='let sel of selected'>
+      {{sel.subject}}
+    </li>
+    <li *ngIf="!selected?.length">No Selections</li>
+  </ul>
 </div>

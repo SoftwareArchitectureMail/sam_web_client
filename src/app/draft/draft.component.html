@@ -37,7 +37,13 @@
             </div>
           </ng-template>
     </ngx-datatable-column>
-        <ngx-datatable-column name="subject" [width]="200"></ngx-datatable-column>
+        <ngx-datatable-column name="subject" [width]="200">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div (click)="getDraft(row.id)" class="btn-subject">
+              {{value}}
+          </div>
+          </ng-template>
+        </ngx-datatable-column>
         <ngx-datatable-column prop="message_body" [width]="300"></ngx-datatable-column>
         <ngx-datatable-column prop="created_at">
         <ng-template let-value="value" ngx-datatable-cell-template>
