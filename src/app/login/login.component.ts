@@ -58,7 +58,7 @@ addPost(post){
   setTimeout(() =>
   {
     if(localStorage.getItem("username")!=null && localStorage.getItem("token")!=null){
-      this.router.navigate(['/inbox']);
+      this.router.navigate(['/mail']);
       this.error=false;
     }else{
       this.error=true;
