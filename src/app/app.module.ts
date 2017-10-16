@@ -7,14 +7,15 @@ import { SentComponent } from './sent/sent.component'
 
 import { AppComponent } from './app.component';
 import { DraftComponent } from './draft/draft.component';
+import { InboxComponent } from './inbox/inbox.component';
 
 @NgModule({
   declarations: [
-    AppComponent, SentComponent, DraftComponent
+    AppComponent, SentComponent, DraftComponent, InboxComponent
   ],
   imports: [
     NgxDatatableModule,
-    HttpModule, 
+    HttpModule,
     BrowserModule
   ],
   providers: [MailService],
