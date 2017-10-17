@@ -1,20 +1,22 @@
 <!-- compose -->
-    <div class="compose col-md-6 col-xs-12" [style.display]="showFormMail()">
-      <div class="compose-header">
-        Mensaje nuevo
-        <button type="button" class="close compose-close" (click)="changeForm(false)">
-          <span>×</span>
-        </button>
-      </div>
-	  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+<div class="container">
+
+  <div class="compose col-md-6 col-xs-12" [style.display]="showFormMail()">
+    <div class="compose-header">
+      Mensaje nuevo
+      <button type="button" class="close compose-close" (click)="changeForm(false)">
+        x
+      </button>
+    </div>
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
       <div class="compose-body">
         <div class="form-compose">
-          	<label for="to" >Para: </label>
-            <input type="text" name="recipient" formControlName="recipient" class="form-control">
-            <label for="subject" >Asunto: </label>
-            <input type="text" name="subject" formControlName="subject" class="form-control">
-
-            <section class="example-section">
+          <label for="to" >Para: </label>
+          <input type="text" name="recipient" formControlName="recipient" class="form-control">
+          <label for="subject" >Asunto: </label>
+          <input type="text" name="subject" formControlName="subject" class="form-control">
+          <div class="container">
+            <section class="col-md-4 example-section">
               <mat-slide-toggle
               class="example-margin"
               [color]="color"
@@ -25,7 +27,7 @@
               ¿Es urgente?
             </mat-slide-toggle>
           </section>
-          <section class="example-section">
+          <section class="col-md-4 example-section">
             <mat-slide-toggle
             class="example-margin"
             [color]="color"
@@ -36,12 +38,22 @@
             ¿Borrador?
           </mat-slide-toggle>
         </section>
-        </div>
-        <textarea [froalaEditor]='options' formControlName="message_body"></textarea>
-      </div>
-      <div class="compose-footer">
-        <input  type="submit" class="btn btn-sm btn-primary" value="Enviar" [disabled]="!rForm.valid">
-      </div>
-  </form>
+        <owl-date-time class="col-md-4" [showHeader]="true" [inputId]="'sent_date'" formControlName="sent_date" [locale]="es">
+          <div class="calendar-btn ">
+            <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+          </div>
+        </owl-date-time>
+
+          </div>
+            <br />
+      <textarea class="bodymessage "[froalaEditor]='options' formControlName="message_body"></textarea>
+    </div>
+  </div>
+
+  <div class="compose-footer">
+    <input  type="submit" class="btn btn-lg btn-success" value="Enviar" [disabled]="!rForm.valid">
+  </div>
+</form>
+</div>
 </div>
     <!-- /compose -->

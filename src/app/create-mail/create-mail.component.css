@@ -104,27 +104,29 @@
 }
 .compose {
   padding: 0;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background: #fff;
-  border: 1px solid #D9DEE4;
-  border-right: 0;
-  border-bottom: 0;
-  border-top-left-radius: 5px;
-  z-index: 1070;
-  display: none;
+    position: fixed;
+    bottom: 60px;
+    right: 52px;
+    background: #fff;
+    border: 1px solid #D9DEE4;
+    z-index: 1070
 }
 .compose .compose-header {
   padding: 5px;
-  background: #169F85;
-  color: #fff;
-  border-top-left-radius: 5px
+background: #1295a8;
+color: #fff;
+font-family: 'SourceSansPro-Bold';
+font-size: 17px;
+height: 37px;
 }
 .compose .compose-header .close {
   text-shadow: 0 1px 0 #ffffff;
-  line-height: .8
+  line-height: .8;
+  font-size:14pt;
 }
+
+
+
 .compose .compose-body{
   background-color: #f7f7f7;
 }
@@ -239,10 +241,6 @@ legend {
   padding: 4px;
   box-sizing: content-box;
   box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
   overflow: scroll;
   outline: none
 }
@@ -259,4 +257,12 @@ legend {
 }
 .compose .compose-footer{
   background-color: #f1f1f1;
+}
+.compose[_ngcontent-c4] .compose-footer[_ngcontent-c4] {
+    height: 50px;
+    background-color: #f1f1f1;
+}
+.fr-box.fr-basic.fr-top .fr-wrapper {
+  height: 152px;
+  font-size: 14pt;
 }

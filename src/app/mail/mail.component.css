@@ -23,7 +23,9 @@
 .sidenav a:hover {
     color: #f1f1f1;
 }
-
+.mat-button, .mat-icon-button, .mat-raised-button{
+  color: white !important;
+}
 .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -31,12 +33,22 @@
     font-size: 36px;
     margin-left: 50px;
 }
+.name{
+  padding-left: 7px;
+  font-size: 15pt;
+  position: relative;
+  top: -5px;
+}
 .menu-btn{
   font-size:30px;
   cursor:pointer;
+  font-family: 'SourceSansPro-SemiBoldItalic';
   position: absolute;
-  top: -90px;
-  color: #fff;
+  top: -79px !important;
+  color: white;
+}
+.menu-btn:hover{
+  color: #24b7ca;
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}

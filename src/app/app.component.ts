@@ -13,13 +13,12 @@ export class AppComponent {
   user:any = localStorage.getItem("username");
   constructor(private router:Router) {
     router.events.subscribe(event => {
+      if(localStorage.getItem("username")!=null && localStorage.getItem("token")!=null){
+        this.auth=true;
+      }else{
+        this.auth=false;
+      }
       if (event instanceof NavigationEnd ) {
-
-        if(localStorage.getItem("username")!=null && localStorage.getItem("token")!=null){
-          this.auth=true;
-        }else{
-          this.auth=false;
-        }
         //console.log(event.url !== "/"); // event.url has current url
         if (event.url !== "/"){
           this.home = false;

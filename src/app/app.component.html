@@ -9,16 +9,18 @@
   </a>
   <router-outlet></router-outlet>
 </div>
-  <div  *ngIf="auth" class="user" >
+<!--  <div  *ngIf="auth" class="user" >
     <img src="/assets/user.png" width="80 " alt="">
     <a  >{{user}}@sam.com</a>
-  </div>
+  </div> -->
     <div  *ngIf="auth" class="logout" >
       <a  (click)="logout()">Cerrar sesión</a>
     </div>
 </nav>
 
 <!-- Home-->
+<div class="container" style="position:relative">
+
   <div *ngIf="home && !auth" class="container">
     <h3 id="slogan">El mejor sistema de correo electrónico, rápido, seguro y automatizado.</h3>
     <div id="buttons">
@@ -27,3 +29,4 @@
     </div>
   </div>
   <router-outlet></router-outlet>
+</div>

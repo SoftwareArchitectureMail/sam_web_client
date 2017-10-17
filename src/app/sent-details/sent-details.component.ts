@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MailService } from '../mail.service';
+import {MatCardModule,MatExpansionModule,MatSnackBar} from '@angular/material';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
 
 @Component({
@@ -14,7 +15,9 @@ private sub: any;
 mail=[];
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private mailService: MailService,
+      public snackBar: MatSnackBar,
     private http: Http
   ) { }
 
@@ -32,5 +35,18 @@ mail=[];
 
     });
   }
-
+  openSnackBar(message: string, action: string) {
+      this.snackBar.open(message, action, {
+        duration: 3000,
+      });
+    }
+volver(){
+  this.router.navigate(['/mail',{outlets:{'mailContent':['sent']}}]);
+}
+  deleteSent(id){
+    this.mailService.deleteSent(id).subscribe(res=> {
+      this.openSnackBar('Mensaje eliminado','Cerrar');
+      this.router.navigate(['/mail',{outlets:{'mailContent':['sent']}}]);
+    });
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MailService } from '../mail.service';
+import {MatCardModule,MatExpansionModule,MatSnackBar} from '@angular/material';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
 
 @Component({
@@ -15,7 +16,9 @@ export class DraftDetailsComponent implements OnInit {
   mail=[];
     constructor(
       private route: ActivatedRoute,
+      private router: Router,
       private mailService: MailService,
+      public snackBar: MatSnackBar,
       private http: Http
     ) { }
 
@@ -30,8 +33,20 @@ export class DraftDetailsComponent implements OnInit {
     getDraft(id) {
       this.mailService.getDraft(id).subscribe(res=> {
         this.mail=res;
-
       });
     }
-
+    openSnackBar(message: string, action: string) {
+        this.snackBar.open(message, action, {
+          duration: 3000,
+        });
+      }
+volver(){
+  this.router.navigate(['/mail',{outlets:{'mailContent':['drafts']}}]);
+}
+    deleteDraft(id){
+      this.mailService.deleteDraft(id).subscribe(res=> {
+        this.openSnackBar('Borrador eliminado','Cerrar');
+        this.router.navigate(['/mail',{outlets:{'mailContent':['drafts']}}]);
+      });
+    }
   }

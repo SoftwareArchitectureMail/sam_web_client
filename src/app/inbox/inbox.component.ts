@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MailService } from '../mail.service';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
+import { DatePipe } from '@angular/common';
 import {DatatableComponent} from '@swimlane/ngx-datatable/src/components/datatable.component';
 import { Router  } from '@angular/router';
 import { Location } from '@angular/common';
@@ -12,7 +13,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent implements OnInit {
-
+ today: number = Date.now();
   ngOnInit() {
     this.inbox();
     this.start();
@@ -20,6 +21,7 @@ export class InboxComponent implements OnInit {
   rows = [];
   selected = [];
   temp = [];
+
 
   active: boolean = true;
 
