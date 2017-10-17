@@ -64,7 +64,7 @@ addPost(post){
       this.error=true;
     }
   },
-  2000);
+  1000);
 
 
   }
