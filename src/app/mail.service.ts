@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MailService {
 
-  //private samUrl = 'http://192.168.99.101:4000';
-  private samUrl = 'http://localhost:4000';
+  private samUrl = 'http://192.168.99.101:4000';
+  //private samUrl = 'http://localhost:4000';
   sender='?sender='+localStorage.getItem('username');
   constructor(private http: Http) { }
   sent() {
