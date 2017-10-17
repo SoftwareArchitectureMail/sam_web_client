@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 import {MatSnackBarModule,MatCardModule,MatButtonModule, MatCheckboxModule,MatSlideToggleModule,MatFormFieldModule,MatExpansionModule} from '@angular/material';
 
 import { MailService } from './mail.service';
@@ -52,6 +53,7 @@ import { CreateMailComponent } from './create-mail/create-mail.component';
     MatFormFieldModule,
     MatCardModule,
     MatExpansionModule,
+    DateTimePickerModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     RouterModule.forRoot([
