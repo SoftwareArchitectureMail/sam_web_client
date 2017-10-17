@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MailService } from '../mail.service';
+import { DatePipe } from '@angular/common';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
 import {DatatableComponent} from '@swimlane/ngx-datatable/src/components/datatable.component';
 import { Router  } from '@angular/router';
@@ -14,7 +15,7 @@ import 'rxjs/add/operator/switchMap';
 })
 
 export class SentComponent implements OnInit {
-
+today: number = Date.now();
   ngOnInit() {
     this.sent();
     this.start();

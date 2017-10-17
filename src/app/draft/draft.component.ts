@@ -3,6 +3,7 @@ import { MailService } from '../mail.service';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
 import {DatatableComponent} from '@swimlane/ngx-datatable/src/components/datatable.component';
 import { Router  } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
@@ -12,7 +13,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./draft.component.css']
 })
 export class DraftComponent implements OnInit {
-
+ today: number = Date.now();
   ngOnInit() {
     this.draft();
     this.start();

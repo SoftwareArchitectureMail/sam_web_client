@@ -44,10 +44,17 @@
             </div>
             </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column prop="message_body" [width]="300"></ngx-datatable-column>
+          <ngx-datatable-column prop="message_body" [width]="300">
+            <ng-template let-value="value" ngx-data-cell-template>
+            <div [innerHTML]="value"></div>
+          </ng-template>
+          </ngx-datatable-column>
           <ngx-datatable-column prop="sent_date">
           <ng-template let-value="value" ngx-datatable-cell-template>
-              <strong>  {{value | date : 'short'}}  </strong>
+            <div *ngIf="(value | date ) != (today|date); else otherDate;" >
+              <strong>  {{value | date : 'd MMM'}}  </strong>
+            </div>
+            <ng-template #otherDate>{{value | date: 'shortTime' }}</ng-template>
           </ng-template>
         </ngx-datatable-column>
 </ngx-datatable>

@@ -47,7 +47,12 @@
         <ngx-datatable-column prop="message_body" [width]="300"></ngx-datatable-column>
         <ngx-datatable-column prop="created_at">
         <ng-template let-value="value" ngx-datatable-cell-template>
-              {{value | date : 'short'}}
+          <div *ngIf="(value|date) != (today|date);else other" >
+            {{value|date:'d MMM'}}
+          </div>
+          <ng-template #other>
+            <div> {{value| date: 'shortTime'}} </div>
+          </ng-template>
         </ng-template>
       </ngx-datatable-column>
 </ngx-datatable>

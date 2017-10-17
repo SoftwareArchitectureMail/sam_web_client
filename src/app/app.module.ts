@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatSnackBarModule,MatButtonModule, MatCheckboxModule,MatSlideToggleModule,MatFormFieldModule} from '@angular/material';
+import {MatSnackBarModule,MatCardModule,MatButtonModule, MatCheckboxModule,MatSlideToggleModule,MatFormFieldModule,MatExpansionModule} from '@angular/material';
 
-import { MailService } from './mail.service'
-import { SentComponent } from './sent/sent.component'
+import { MailService } from './mail.service';
+import { SentComponent } from './sent/sent.component';
 import { AppComponent } from './app.component';
 import { DraftComponent } from './draft/draft.component';
 import { RegisterComponent } from './register/register.component';
@@ -49,6 +50,8 @@ import { CreateMailComponent } from './create-mail/create-mail.component';
     MatCheckboxModule,
     MatSlideToggleModule,
     MatFormFieldModule,
+    MatCardModule,
+    MatExpansionModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     RouterModule.forRoot([
@@ -92,6 +95,11 @@ import { CreateMailComponent } from './create-mail/create-mail.component';
       {
         path: 'draftDetails/:id',
         component: DraftDetailsComponent,
+        outlet: 'mailContent'
+      },
+      {
+        path: 'mailDetails/:id',
+        component: MailDetailsComponent,
         outlet: 'mailContent'
       },
       ]

@@ -11,9 +11,9 @@ export class AppComponent {
   home:any = true;
   let
   constructor(private router:Router) {
-
+    localStorage.setItem('username','janoguerab');
     router.events.subscribe(event => {
-
+      
       if (event instanceof NavigationEnd ) {
         //console.log(event.url !== "/"); // event.url has current url
         if (event.url !== "/"){

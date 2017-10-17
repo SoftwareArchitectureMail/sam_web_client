@@ -1,4 +1,13 @@
 <div id="mySidenav" class="sidenav" [style.width]="setWidth()">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <i class="fa fa-user-circle" aria-hidden="true" style="font-size:30px;"></i>
+         </div>
+      <mat-card-title>{{username}}</mat-card-title>
+      <mat-card-subtitle>@sam.com</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
   <a href="javascript:void(0)" class="closebtn" (click)="changeStyle = false; showForm=false;">&times;</a>
   <a href="javascript:void(0)" (click)="showForm=true;changeStyle = false;">Nuevo</a>
   <a [routerLink]="[{ outlets: { 'mailContent': ['inbox'] } }]" (click)="changeStyle = false;">Recibidos</a>
@@ -6,5 +15,7 @@
   <a [routerLink]="[{ outlets: { 'mailContent': ['drafts'] } }]" (click)="changeStyle = false;">Draft</a>
 </div>
 <button mat-button class="menu-btn" (click)="changeStyle = !changeStyle;">&#9776;</button>
-<router-outlet name="mailContent"></router-outlet>
+<div class="container">
+  <router-outlet name="mailContent"></router-outlet>
+</div>
 <app-create-mail [showForm]="showForm" (onShowForm)="onShowForm($event)"></app-create-mail>

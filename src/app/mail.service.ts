@@ -9,13 +9,13 @@ export class MailService {
 
   //private samUrl = 'http://192.168.99.101:4000';
   private samUrl = 'http://localhost:4000';
+  sender='?sender='+localStorage.getItem('username');
   constructor(private http: Http) { }
-
   sent() {
     let body = { }
     let headers = new Headers({ 'ContentType': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(this.samUrl+'/sent',options).map(
+    return this.http.get(this.samUrl+'/sent'+this.sender,options).map(
       response =>  response.json()
     );
     }
@@ -24,7 +24,7 @@ export class MailService {
       let body = { }
       let headers = new Headers({ 'ContentType': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      return this.http.get(this.samUrl+'/draft',options).map(
+      return this.http.get(this.samUrl+'/draft'+this.sender,options).map(
         response =>  response.json()
       );
       }
@@ -33,7 +33,7 @@ export class MailService {
         let body = { }
         let headers = new Headers({ 'ContentType': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.get(this.samUrl+'/sent/'+id,options).map(
+        return this.http.get(this.samUrl+'/sent/'+id+this.sender,options).map(
           response =>  response.json()
         );
         }
@@ -41,7 +41,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json' });
           let options = new RequestOptions({ headers: headers });
-          return this.http.get(this.samUrl+'/draft/'+id,options).map(
+          return this.http.get(this.samUrl+'/draft/'+id+this.sender,options).map(
             response =>  response.json()
           );
           }
@@ -50,7 +50,7 @@ export class MailService {
         let body = JSON.stringify(mail);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.samUrl+'/send', body, options).map(
+        return this.http.post(this.samUrl+'/send'+this.sender, body, options).map(
           response =>  response.json()
           );
       }
@@ -58,7 +58,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json' });
           let options = new RequestOptions({ headers: headers });
-            return this.http.get(this.samUrl+'/inbox?page=1&per_page=100',options).map(
+            return this.http.get(this.samUrl+'/inbox'+this.sender,options).map(
             response =>  response.json()
             )
         }
@@ -67,16 +67,42 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json' });
           let options = new RequestOptions({ headers: headers });
-          return this.http.get(this.samUrl+'/inbox/'+id,options).map(
+          return this.http.get(this.samUrl+'/inbox/'+id+this.sender,options).map(
             response =>  response.json()
             )
         }
 
+        deleteSent(id) {
+          let body = { }
+          let headers = new Headers({ 'ContentType': 'application/json' });
+          let options = new RequestOptions({ headers: headers });
+          return this.http.delete(this.samUrl+'/sent/'+id+this.sender,options).map(
+            response =>  response.json()
+            )
+        }
+
+        deleteDraft(id) {
+          let body = { }
+          let headers = new Headers({ 'ContentType': 'application/json' });
+          let options = new RequestOptions({ headers: headers });
+          return this.http.delete(this.samUrl+'/draft/'+id+this.sender,options).map(
+            response =>  response.json()
+            )
+        }
+
+        deleteMail(id) {
+          let body = { }
+          let headers = new Headers({ 'ContentType': 'application/json' });
+          let options = new RequestOptions({ headers: headers });
+          return this.http.delete(this.samUrl+'/inbox/'+id+this.sender,options).map(
+            response =>  response.json()
+            )
+        }
         readMail(id) {
           let body = { read: true }
           let headers = new Headers({ 'ContentType': 'application/json' });
           let options = new RequestOptions({ headers: headers });
-          return this.http.put(this.samUrl+'/inbox/'+id,body,options).map(
+          return this.http.put(this.samUrl+'/inbox/'+id+this.sender,body,options).map(
             response =>  response.json()
             )
         }

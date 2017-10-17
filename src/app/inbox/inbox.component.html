@@ -16,7 +16,8 @@ class="material"
 [limit]="10"
 [selected]="selected"
 [selectionType]="'checkbox'"
-(select)='onSelect($event)'>
+(select)='onSelect($event)'
+>
 <ngx-datatable-column
 [width]="30"
 [canAutoResize]="false"
@@ -29,7 +30,29 @@ class="material"
     </div>
   </ng-template>
 </ngx-datatable-column>
-<ngx-datatable-column name="recipient" [width]="80"></ngx-datatable-column>
+
+<ngx-datatable-column name="sender" [width]="80">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div *ngIf="!row.read; else unread">
+          <div style="color:black ">
+          <strong>{{value}}</strong>
+        </div>
+      </div>
+      <ng-template #unread>
+        <div>
+          {{value}}
+        </div>
+      </ng-template>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column prop="read"[width]="30" [canAutoResize]="false">
+  <ng-template let-value="value" ngx-datatable-cell-template>
+    <div *ngIf="value; else unread">
+      <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
+    </div>
+    <ng-template #unread><i class="fa fa-envelope" aria-hidden="true"></i></ng-template>
+  </ng-template>
+</ngx-datatable-column>
 <ngx-datatable-column prop="attachment"[width]="30" [canAutoResize]="false">
   <ng-template let-value="value" ngx-datatable-cell-template>
     <div *ngIf="value.url;">
@@ -39,13 +62,13 @@ class="material"
 </ngx-datatable-column>
 <ngx-datatable-column name="subject" [width]="200">
   <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-    <div (click)="getInbox(row.id)" class="btn-subject">
-
+    <div (click)="getMail(row.id)" class="btn-subject">
       <div *ngIf="!row.read; else unread">
-        <strong>{{value}}</strong>
+          <div style="color:black ">
+          <strong>{{value}}</strong>
+        </div>
       </div>
       <ng-template #unread>
-
         <div>
           {{value}}
         </div>
@@ -57,31 +80,28 @@ class="material"
 
   <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
     <div *ngIf="!row.read; else unread">
-      <strong>{{value}}</strong>
+      <strong><div [innerHTML]="value" style="color:black"></div></strong>
     </div>
     <ng-template #unread>
-
-      <div>
-        {{value}}
-      </div>
+        <div [innerHTML]="value"></div>
     </ng-template>
     </ng-template>
   </ngx-datatable-column>
 
-<ngx-datatable-column prop="sent_date">
+<ngx-datatable-column prop="created_at">
   <ng-template let-value="value" ngx-datatable-cell-template>
-    <div *ngIf="!row.read; else unread" (click)='onClick(row)'>
-      <strong>  {{value | date : 'short'}}  </strong>
+    <div *ngIf="(value | date ) != (today|date); else otherDate" >
+       {{value | date: 'd MMM' }}
     </div>
-    <ng-template #unread>
-      <div>
-        {{value | date : 'short'}}
-      </div>
-    </ng-template>
-
+    <ng-template #otherDate>{{ value | date : 'shortTime'}}</ng-template>
   </ng-template>
+
+
 </ngx-datatable-column>
 </ngx-datatable>
+
+
+
 
 <div class='selected-column'>
   <h4>Selections <small>({{selected?.length}})</small></h4>

@@ -16,6 +16,7 @@ export class MailComponent implements OnInit {
   showForm:boolean= false;
   changeStyle:boolean= false;
 
+username='';
   constructor(
     private router: Router,
     private location: Location
@@ -23,6 +24,7 @@ export class MailComponent implements OnInit {
 
   ngOnInit() {
   this.router.navigate(['/mail',{outlets:{'mailContent':['inbox']}}]);
+  this.username=  localStorage.getItem('username');
   }
 
   setWidth() {
