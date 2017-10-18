@@ -31,7 +31,7 @@ export class MailService {
     let body = { }
     let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(this.samUrl+'/sent'+this.sender,options).map(
+    return this.http.get(this.samUrl+'/sent',options).map(
       response =>  response.json()
     );
     }
@@ -40,7 +40,7 @@ export class MailService {
       let body = { }
       let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
       let options = new RequestOptions({ headers: headers });
-      return this.http.get(this.samUrl+'/draft'+this.sender,options).map(
+      return this.http.get(this.samUrl+'/draft',options).map(
         response =>  response.json()
       );
       }
@@ -49,7 +49,7 @@ export class MailService {
         let body = { }
         let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
         let options = new RequestOptions({ headers: headers });
-        return this.http.get(this.samUrl+'/sent/'+id+this.sender,options).map(
+        return this.http.get(this.samUrl+'/sent/'+id,options).map(
           response =>  response.json()
         );
         }
@@ -57,7 +57,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
           let options = new RequestOptions({ headers: headers });
-          return this.http.get(this.samUrl+'/draft/'+id+this.sender,options).map(
+          return this.http.get(this.samUrl+'/draft/'+id,options).map(
             response =>  response.json()
           );
           }
@@ -66,7 +66,7 @@ export class MailService {
         let body = JSON.stringify(mail);
         let headers = new Headers({ 'Content-Type': 'application/json','Authorization': localStorage.getItem('token') });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.samUrl+'/send'+this.sender, body, options).map(
+        return this.http.post(this.samUrl+'/send', body, options).map(
           response =>  response.json()
           );
       }
@@ -74,7 +74,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
           let options = new RequestOptions({ headers: headers });
-            return this.http.get(this.samUrl+'/inbox'+this.sender,options).map(
+            return this.http.get(this.samUrl+'/inbox',options).map(
             response =>  response.json()
             )
         }
@@ -83,7 +83,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
           let options = new RequestOptions({ headers: headers });
-          return this.http.get(this.samUrl+'/inbox/'+id+this.sender,options).map(
+          return this.http.get(this.samUrl+'/inbox/'+id,options).map(
             response =>  response.json()
             )
         }
@@ -92,7 +92,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
           let options = new RequestOptions({ headers: headers });
-          return this.http.delete(this.samUrl+'/sent/'+id+this.sender,options).map(
+          return this.http.delete(this.samUrl+'/sent/'+id,options).map(
             response =>  response.json()
             )
         }
@@ -101,7 +101,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
           let options = new RequestOptions({ headers: headers });
-          return this.http.delete(this.samUrl+'/draft/'+id+this.sender,options).map(
+          return this.http.delete(this.samUrl+'/draft/'+id,options).map(
             response =>  response.json()
             )
         }
@@ -110,7 +110,7 @@ export class MailService {
           let body = { }
           let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
           let options = new RequestOptions({ headers: headers });
-          return this.http.delete(this.samUrl+'/inbox/'+id+this.sender,options).map(
+          return this.http.delete(this.samUrl+'/inbox/'+id,options).map(
             response =>  response.json()
             )
         }
@@ -118,7 +118,7 @@ export class MailService {
           let body = { read: true }
           let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
           let options = new RequestOptions({ headers: headers });
-          return this.http.put(this.samUrl+'/inbox/'+id+this.sender,body,options).map(
+          return this.http.put(this.samUrl+'/inbox/'+id,body,options).map(
             response =>  response.json()
             )
         }
