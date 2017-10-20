@@ -4,6 +4,8 @@ import {AbstractControl} from '@angular/forms';
 import { Http, Request, RequestMethod, RequestOptions, Headers } from '@angular/http';
 import { MailService } from '../mail.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { MessagingService } from "../messaging.service";
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,7 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   auth:any = false;
   login:any = true;
   rForm: FormGroup;
@@ -20,11 +23,11 @@ export class LoginComponent implements OnInit {
   content={
     username:"",
     password:"",
-    device_id: "web"
+    device_id: []
   };
 
 
-  constructor(private router:Router, private fb: FormBuilder, private mailService: MailService,  private http: Http) {
+  constructor(private msgService: MessagingService,private router:Router, private fb: FormBuilder, private mailService: MailService,  private http: Http) {
     router.events.subscribe(event => {
       if(localStorage.getItem("username")!=null && localStorage.getItem("token")!=null){
         this.auth=true;
@@ -50,6 +53,7 @@ export class LoginComponent implements OnInit {
 addPost(post){
   this.content.username = post.user;
   this.content.password = post.password;
+  this.content.device_id = this.msgService.getDeviceId();
   let request = this.mailService.login(this.content).subscribe(res => {
     console.log(res);
     localStorage.setItem('username',res.username);
@@ -70,5 +74,6 @@ addPost(post){
   }
 
   ngOnInit() {
+    this.msgService.getPermission()
   }
 }

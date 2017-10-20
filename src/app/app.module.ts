@@ -9,6 +9,17 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import {MatSnackBarModule,MatCardModule,MatButtonModule, MatCheckboxModule,MatSlideToggleModule,MatFormFieldModule,MatExpansionModule} from '@angular/material';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+// for AngularFireAuth
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+import { environment } from '../environments/environment';
+import { MessagingService } from './messaging.service';
+
 
 import { MailService } from './mail.service';
 import { SentComponent } from './sent/sent.component';
@@ -54,6 +65,10 @@ import { CreateMailComponent } from './create-mail/create-mail.component';
     MatCardModule,
     MatExpansionModule,
     DateTimePickerModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     RouterModule.forRoot([
@@ -108,7 +123,7 @@ import { CreateMailComponent } from './create-mail/create-mail.component';
     }
   ])
   ],
-  providers: [MailService],
+  providers: [MailService,MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

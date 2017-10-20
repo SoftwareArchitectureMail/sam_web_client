@@ -2,12 +2,14 @@ import {Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
+
   home:any = true;
   auth:any = false;
   user:any = localStorage.getItem("username");
@@ -30,6 +32,7 @@ export class AppComponent {
     });
 
   }
+
   logout(){
     localStorage.removeItem('username');
     localStorage.removeItem('token');    //remove user local storage

@@ -123,4 +123,15 @@ export class MailService {
             )
         }
 
+        updateToken(uId) {
+          let body = { read: true }
+          let headers = new Headers({ 'ContentType': 'application/json','Authorization': localStorage.getItem('token') });
+          let options = new RequestOptions({ headers: headers });
+          return this.http.post(this.samUrl+'/user_devices'+uId,body,options).map(
+            response =>  response.json()
+            )
+        }
+
+
+
   }
