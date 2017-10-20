@@ -74,6 +74,6 @@ addPost(post){
   }
 
   ngOnInit() {
-    this.msgService.getPermission()
+    this.msgService.getPermission();
   }
 }
