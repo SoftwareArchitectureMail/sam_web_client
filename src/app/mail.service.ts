@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MailService {
 
-  private samUrl = 'http://192.168.99.101:4000';
+  private samUrl = 'http://192.168.43.168:4000';
   //private samUrl = 'http://localhost:4000';
   sender='?sender='+localStorage.getItem('username');
   constructor(private http: Http) { }
@@ -15,7 +15,7 @@ export class MailService {
       let body =  content;
       let headers = new Headers({ 'ContentType': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      return this.http.post('http://192.168.99.101:4000/users/create',body,options).map(
+      return this.http.post(this.samUrl+'/users/create',body,options).map(
         response =>  response.json()
       );
       }
@@ -23,7 +23,7 @@ export class MailService {
         let body =  content;
         let headers = new Headers({ 'ContentType': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post('http://192.168.99.101:4000/users/login',body,options).map(
+        return this.http.post(this.samUrl+'/users/login',body,options).map(
           response =>  response.json()
         );
         }

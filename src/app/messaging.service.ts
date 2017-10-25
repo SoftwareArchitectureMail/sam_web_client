@@ -10,16 +10,11 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 export class MessagingService {
 
   messaging = firebase.messaging();
-  userId=[];
   currentMessage = new BehaviorSubject(null);
   constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth){}
   updateToken(token) {
-    this.afAuth.authState.take(1).subscribe(user => {
-      if (!user) return;
-      const data = { [user.uid]: token }
-      this.userId=[user.uid]
-      this.db.object('fcmTokens/').update(data)
-    })
+    console.log(token);
+    localStorage.setItem('device_id',token);
   }
   getPermission() {
       this.messaging.requestPermission()
@@ -28,7 +23,6 @@ export class MessagingService {
         return this.messaging.getToken()
       })
       .then(token => {
-        console.log(token)
         this.updateToken(token)
       })
       .catch((err) => {
@@ -41,7 +35,5 @@ export class MessagingService {
         this.currentMessage.next(payload)
       });
     }
-    getDeviceId(){
-      return this.userId;
-    }
+
 }

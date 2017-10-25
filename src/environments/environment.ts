@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+
   firebase: {
     apiKey: "AIzaSyBPpVZN19f87ALI9lgLAHPbdGHU3NbxGsA",
    authDomain: "sa-mailer.firebaseapp.com",
@@ -13,4 +14,5 @@ export const environment = {
    storageBucket: "sa-mailer.appspot.com",
    messagingSenderId: "1067540517895"
   }
+  
 };

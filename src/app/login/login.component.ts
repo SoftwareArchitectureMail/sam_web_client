@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
   content={
     username:"",
     password:"",
-    device_id: []
+    device_id:""
   };
 
 
-  constructor(private msgService: MessagingService,private router:Router, private fb: FormBuilder, private mailService: MailService,  private http: Http) {
+  constructor(private router:Router, private fb: FormBuilder, private mailService: MailService,  private http: Http) {
     router.events.subscribe(event => {
       if(localStorage.getItem("username")!=null && localStorage.getItem("token")!=null){
         this.auth=true;
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 addPost(post){
   this.content.username = post.user;
   this.content.password = post.password;
-  this.content.device_id = this.msgService.getDeviceId();
+  this.content.device_id=localStorage.getItem('device_id');
   let request = this.mailService.login(this.content).subscribe(res => {
     console.log(res);
     localStorage.setItem('username',res.username);
@@ -74,6 +74,6 @@ addPost(post){
   }
 
   ngOnInit() {
-    this.msgService.getPermission();
+
   }
 }

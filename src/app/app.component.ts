@@ -1,6 +1,6 @@
-import {Component } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-
+import { MessagingService } from "./messaging.service";
 
 
 @Component({
@@ -8,12 +8,12 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
-
+export class AppComponent implements OnInit{
   home:any = true;
   auth:any = false;
   user:any = localStorage.getItem("username");
-  constructor(private router:Router) {
+  device_id:any=localStorage.getItem("device_id");
+  constructor(private router:Router,private msgService: MessagingService) {
     router.events.subscribe(event => {
       if(localStorage.getItem("username")!=null && localStorage.getItem("token")!=null){
         this.auth=true;
@@ -36,7 +36,12 @@ export class AppComponent{
   logout(){
     localStorage.removeItem('username');
     localStorage.removeItem('token');    //remove user local storage
+    localStorage.removeItem('device_id');
     this.router.navigate(['/']);
   }
 
+
+    ngOnInit() {
+      this.msgService.getPermission();
+    }
 }
