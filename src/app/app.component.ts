@@ -11,6 +11,7 @@ import { MessagingService } from "./messaging.service";
 export class AppComponent implements OnInit{
   home:any = true;
   auth:any = false;
+  message;
   user:any = localStorage.getItem("username");
   device_id:any=localStorage.getItem("device_id");
   constructor(private router:Router,private msgService: MessagingService) {
@@ -43,5 +44,7 @@ export class AppComponent implements OnInit{
 
     ngOnInit() {
       this.msgService.getPermission();
+      this.msgService.receiveMessage()
+      this.message = this.msgService.currentMessage
     }
 }
