@@ -12,10 +12,8 @@ import 'rxjs/add/operator/switchMap';
   preserveWhitespaces: false,
 })
 export class MailComponent implements OnInit {
-
   showForm:boolean= false;
   changeStyle:boolean= false;
-
 username='';
   constructor(
     private router: Router,
