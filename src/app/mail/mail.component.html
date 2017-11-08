@@ -12,7 +12,7 @@
   <a href="javascript:void(0)" (click)="showForm=true;changeStyle = false;">Nuevo</a>
   <a [routerLink]="[{ outlets: { 'mailContent': ['inbox'] } }]" (click)="changeStyle = false;">Recibidos</a>
   <a [routerLink]="[{ outlets: { 'mailContent': ['sent'] } }]" (click)="changeStyle = false;">Enviados</a>
-  <a [routerLink]="[{ outlets: { 'mailContent': ['drafts'] } }]" (click)="changeStyle = false;">Draft</a>
+  <a [routerLink]="[{ outlets: { 'mailContent': ['drafts'] } }]" (click)="changeStyle = false;">Borradores</a>
 </div>
 <button mat-button class="menu-btn" (click)="changeStyle = !changeStyle;">&#9776;<span class="name">{{username}}@sam.com</span></button>
 <div class="container">

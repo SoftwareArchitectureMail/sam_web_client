@@ -1,7 +1,6 @@
 import {Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { MessagingService } from "./messaging.service";
-
+import { MessagingService } from "./messaging.service"
 
 @Component({
   selector: 'app-root',
@@ -41,10 +40,10 @@ export class AppComponent implements OnInit{
     this.router.navigate(['/']);
   }
 
-
     ngOnInit() {
       this.msgService.getPermission();
       this.msgService.receiveMessage()
       this.message = this.msgService.currentMessage
     }
+
 }

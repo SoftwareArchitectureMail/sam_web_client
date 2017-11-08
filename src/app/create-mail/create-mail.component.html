@@ -3,20 +3,34 @@
 
   <div class="compose col-md-6 col-xs-12" [style.display]="showFormMail()">
     <div class="compose-header">
-      Mensaje nuevo
+      Nuevo Mensaje
       <button type="button" class="close compose-close" (click)="changeForm(false)">
-        x
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
       </button>
     </div>
+    <mat-form-field>
+    <mat-chip-list #chipList>
+<mat-chip *ngFor="let recipient of recipients" [selectable]="selectable"
+       [removable]="removable" (remove)="remove(recipient)">
+       {{recipient.username}}
+       <i matChipRemove *ngIf="removable" class="fa fa-times-circle-o" aria-hidden="true"></i>
+</mat-chip>
+<input placeholder="Para"
+     [matChipInputFor]="chipList"
+     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+     [matChipInputAddOnBlur]="addOnBlur"
+     (matChipInputTokenEnd)="add($event)"
+
+     />
+</mat-chip-list>
+</mat-form-field>
     <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
       <div class="compose-body">
         <div class="form-compose">
-          <label for="to" >Para: </label>
-          <input type="text" name="recipient" formControlName="recipient" class="form-control">
-          <label for="subject" >Asunto: </label>
-          <input type="text" name="subject" formControlName="subject" class="form-control">
-          <div class="container">
-            <section class="col-md-4 example-section">
+
+          <input placeholder="Asunto" type="text" name="subject" formControlName="subject" class="form-control">
+    <mat-grid-list cols="3" rowHeight="2:1">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-slide-toggle
               class="example-margin"
               [color]="color"
@@ -26,8 +40,8 @@
               >
               ¿Es urgente?
             </mat-slide-toggle>
-          </section>
-          <section class="col-md-4 example-section">
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-slide-toggle
             class="example-margin"
             [color]="color"
@@ -37,14 +51,15 @@
             >
             ¿Borrador?
           </mat-slide-toggle>
-        </section>
-        <owl-date-time class="col-md-4" [showHeader]="true" [inputId]="'sent_date'" formControlName="sent_date" [locale]="es">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <owl-date-time [showHeader]="true" [inputId]="'sent_date'" formControlName="sent_date" [locale]="es">
           <div class="calendar-btn ">
             <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
           </div>
         </owl-date-time>
-
-          </div>
+      </mat-grid-tile>
+          </mat-grid-list>
             <br />
       <textarea class="bodymessage "[froalaEditor]='options' formControlName="message_body"></textarea>
     </div>
@@ -54,6 +69,7 @@
     <input  type="submit" class="btn btn-lg btn-success" value="Enviar" [disabled]="!rForm.valid">
   </div>
 </form>
+
 </div>
 </div>
     <!-- /compose -->

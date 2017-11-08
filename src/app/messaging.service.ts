@@ -4,14 +4,15 @@ import { AngularFireDatabase,FirebaseObjectObservable,FirebaseListObservable } f
 import { AngularFireAuth }     from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import 'rxjs/add/operator/take';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class MessagingService {
 
   messaging = firebase.messaging();
   currentMessage = new BehaviorSubject(null);
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth){}
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth,public snackBar: MatSnackBar){}
   updateToken(token) {
     console.log(token);
     localStorage.setItem('device_id',token);
@@ -32,7 +33,10 @@ export class MessagingService {
     receiveMessage() {
        this.messaging.onMessage((payload) => {
         console.log("Message received. ", payload);
-        this.currentMessage.next(payload)
+        this.currentMessage.next(payload);
+        this.snackBar.open("Tienes un nuevo mensaje", "Cerrar", {
+          duration: 3000,
+    });
       });
     }
 

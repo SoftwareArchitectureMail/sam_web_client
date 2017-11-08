@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DateTimePickerModule } from 'ng-pick-datetime';
-import {MatSnackBarModule,MatCardModule,MatButtonModule, MatCheckboxModule,MatSlideToggleModule,MatFormFieldModule,MatExpansionModule} from '@angular/material';
+import {MatSnackBarModule,MatCardModule,MatButtonModule, MatIconModule, MatChipsModule, MatCheckboxModule,MatSlideToggleModule,MatFormFieldModule,MatExpansionModule,MatGridListModule} from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
@@ -57,9 +57,12 @@ import { CreateMailComponent } from './create-mail/create-mail.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatGridListModule,
     MatSnackBarModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatChipsModule,
+    MatIconModule,
     MatSlideToggleModule,
     MatFormFieldModule,
     MatCardModule,
