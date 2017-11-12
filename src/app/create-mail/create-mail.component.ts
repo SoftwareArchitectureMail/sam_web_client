@@ -76,7 +76,6 @@ public pickerColor: string = '#0070ba';
   addPost(post){
 
     this.recipients.forEach(function (value) {
-      console.log(value.username);
       this.sentmail.recipient = value.username;
       this.sentmail.subject = post.subject;
       this.sentmail.message_body = post.message_body;
@@ -84,8 +83,7 @@ public pickerColor: string = '#0070ba';
       this.sentmail.draft = (post.draft)?post.draft:false;
       this.sentmail.urgent = (post.urgent)?post.urgent:false;
       this.sentmail.sent_date = post.sent_date;
-      console.log(this.sentmail);
-      //this.createMail(this.sentmail);
+      this.createMail(this.sentmail);
     });
     this.recipients=[];
 

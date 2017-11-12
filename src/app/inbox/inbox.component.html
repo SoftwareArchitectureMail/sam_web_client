@@ -19,14 +19,9 @@ class="material"
 [rows]="rows"
 [limit]="10"
 [selected]="selected"
-[selectionType]="'checkbox'"
 (select)='onSelect($event)'
 >
-<ngx-datatable-column
-[width]="30"
-[canAutoResize]="false"
-[checkboxable]="true">
-</ngx-datatable-column>
+
 <ngx-datatable-column name="urgent" [width]="30" [canAutoResize]="false">
   <ng-template let-value="value" ngx-datatable-cell-template>
     <div *ngIf="value;">
