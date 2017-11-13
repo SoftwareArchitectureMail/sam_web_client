@@ -32,7 +32,6 @@ export class MessagingService {
     }
     receiveMessage() {
        this.messaging.onMessage((payload) => {
-        console.log("Message received. ", payload);
         this.currentMessage.next(payload);
         this.snackBar.open("Tienes un nuevo mensaje", "Cerrar", {
           duration: 3000,

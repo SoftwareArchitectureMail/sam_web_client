@@ -16,22 +16,16 @@
         <div class="form-compose">
           <mat-form-field style="width:100%;font:400 14px/20px Roboto,'Helvetica Neue',sans-serif;">
             <mat-chip-list #chipList>
-              <mat-chip *ngFor="let recipient of recipients" [selectable]="selectable"
-              [removable]="removable" (remove)="remove(recipient)">
-              {{recipient.username}}
-              <i matChipRemove *ngIf="removable" class="fa fa-times-circle-o" aria-hidden="true"></i>
-            </mat-chip>
             <input placeholder="Para"
             [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="add($event)"
-            />
+            formControlName="recipient"
+          />
           </mat-chip-list>
         </mat-form-field>
           <mat-form-field style="width:100%;font:400 14px/20px Roboto,'Helvetica Neue',sans-serif">
             <mat-chip-list #asunto>
-              <input placeholder="Asunto" [matChipInputFor]="asunto" style="width:100%;" />
+              <input placeholder="Asunto" [matChipInputFor]="asunto" style="width:100%;"
+              formControlName="subject"/>
             </mat-chip-list>
           </mat-form-field>
 <div class="row">
@@ -74,7 +68,7 @@
   </div>
 
   <div class="compose-footer">
-    <input  type="submit" class="btn btn-lg btn-success" value="Enviar" [disabled]="!rForm.valid">
+    <input  type="submit" class="btn btn-lg btn-success" value="Enviar" >
   </div>
 </form>
 

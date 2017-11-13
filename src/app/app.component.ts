@@ -37,7 +37,11 @@ export class AppComponent implements OnInit{
     localStorage.removeItem('username');
     localStorage.removeItem('token');    //remove user local storage
     localStorage.removeItem('device_id');
+    localStorage.removeItem('Rtoken');
     this.router.navigate(['/']);
+    location.reload();
+
+
   }
 
     ngOnInit() {

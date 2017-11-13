@@ -58,6 +58,8 @@ addPost(post){
     console.log(res);
     localStorage.setItem('username',res.username);
     localStorage.setItem('token',res.token.token);
+    localStorage.setItem('Rtoken',res.token.refresh);
+
   });
   setTimeout(() =>
   {
