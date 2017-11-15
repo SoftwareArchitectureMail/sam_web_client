@@ -1,3 +1,4 @@
-eval $(docker-machine env rancher-node2)
+eval $(docker-machine env rancher-node3)
 docker-compose build
 docker-compose up
+
