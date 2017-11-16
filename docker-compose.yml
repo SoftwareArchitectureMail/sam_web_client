@@ -2,7 +2,7 @@ version: '2'
 services:
   sam-web-client:
     #build: .
-    image: akosoriod/sam-web-client
+    image: davsanba/sam_web_client
     command: "ng serve --port=4200 --host=0.0.0.0 --disable-host-check"
     ports:
       - "4200:4200"
